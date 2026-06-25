@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Accessibility Worldwide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="//cdn.jsdelivr.net/npm/globe.gl"></script>
+</head>
+
+<body>
+
+  <div class="starfield" aria-hidden="true"></div>
+
+  <!--  NAVIGATION -->
+  <nav>
+    <a class="nav-btn active" href="index.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      Globe
+    </a>
+
+    <a class="nav-btn" href="shutdowns.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+        <line x1="8" y1="2" x2="8" y2="18"/>
+        <line x1="16" y1="6" x2="16" y2="22"/>
+      </svg>
+      Shutdowns
+    </a>
+
+    <a class="nav-btn" href="about.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      About
+    </a>
+  </nav>
+
+  <!-- GLOBE PAGE -->
+  <section id="page-globe" class="page active" aria-label="Globe view">
+
+    <div id="globe-container"></div>
+
+    <div class="hero-text">
+      <h1>Internet Accessibility Worldwide</h1>
+      <p>Rotate the globe and click on countries to explore internet access rates — 
+        the share of people who used the internet in the last 3 months, via any device. 
+        <br><br>
+        <em>Data sourced from World Bank and ITU statistics.</em></p>
+    </div>
+
+    <aside class="legend" aria-label="Internet Access Rate legend">
+      <h4>Internet Access Rate</h4>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: var(--tier-90)"></span>
+        <span>90–100%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: var(--tier-80)"></span>
+        <span>80–89%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: var(--tier-60)"></span>
+        <span>60–79%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: var(--tier-40)"></span>
+        <span>40–59%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: var(--tier-12)"></span>
+        <span>12–39%</span>
+      </div>
+    </aside>
+
+  <div class="btn-controls">
+      <button class="btn-random" id="btn-random" aria-label="Show a random country">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 3 21 3 21 8"/>
+          <line x1="4" y1="20" x2="21" y2="3"/>
+          <polyline points="21 16 21 21 16 21"/>
+          <line x1="15" y1="15" x2="21" y2="21"/>
+        </svg>
+        Random country
+      </button>
+
+      <button class="btn-circle" id="btn-stop" aria-label="Stop rotation" title="Stop rotation">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="8" y="6" width="3" height="12" rx="0.6" fill="currentColor"/>
+          <rect x="13" y="6" width="3" height="12" rx="0.6" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <button class="btn-circle" id="btn-play" aria-label="Start rotation" title="Start rotation">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <polygon points="9 6 17 12 9 18" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>  
+
+    <!-- COUNTRY POP UP -->
+    <aside id="country-popup" aria-label="Country information" aria-live="polite">
+      
+      <div class="popup-header">
+        <h3 id="popup-country-name"></h3>
+        <div class="popup-header-actions">
+          <button class="popup-icon-btn" aria-label="Close" onclick="closePopup()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="popup-body">
+        <div id="popup-overlay" style="display: none; position: absolute; inset: 0; background: rgba(15, 25, 41); z-index: 10; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+          <p id="overlay-text">Analyzing internet access...</p>
+        </div>
+
+        <div class="info-block" id="info-state">
+          <div class="access-bar-wrap">
+            <div class="access-bar-label">
+              <span class="label-text">Internet Access</span>
+              <span class="label-pct" id="access-pct"> </span>
+            </div>
+            <div class="access-bar-bg">
+              <div class="access-bar-fill" id="access-bar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="stat-row"><span>Population:</span> <span id="stat-pop">—</span></div>
+          <div class="stat-row"><span>Shutdowns/Year:</span> <span id="stat-shutdowns">—</span></div>
+          <div class="stat-row">
+            <span>Risk of shutdown:</span>
+            <span id="stat-risk-container">
+              <span id="risk-dot" class="risk-dot"></span>
+              <span id="stat-risk">N/A</span>
+            </span>
+          </div>
+          <div class="stat-row"><span>Gini Index:</span> <span id="stat-gini">—</span></div>
+          <div class="stat-row"><span>MPI:</span> <span id="stat-mpi">—</span></div>
+          <div class="stat-row"><span>HDI:</span> <span id="stat-hdi">—</span></div>
+          
+          <a class="btn-shutdowns" href="shutdowns.html">Explore Shutdowns Data</a>
+        </div>
+
+      </div>
+    </aside>
+
+  </section>
+
+  <script src="js/globe.js"></script>
+
+  <!-- MOBILE DISCLAIMER -->
+  <div id="mobile-disclaimer" role="dialog" aria-modal="true" aria-label="Desktop recommended">
+    <div class="mobile-disclaimer-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+      </svg>
+      <h2>Best on desktop</h2>
+      <p>This globe is designed for larger screens. For the full experience, open it on a desktop or laptop.</p>
+      <button onclick="document.getElementById('mobile-disclaimer').style.display='none'">Continue anyway</button>
+      </div>
+  </div>
+
+</body>
+</html>

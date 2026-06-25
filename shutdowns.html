@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shutdowns— Internet Accessibility Worldwide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+
+<body>
+
+  <div class="starfield" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a class="nav-btn" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      Globe
+    </a>
+
+    <a class="nav-btn active" href="shutdowns.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+        <line x1="8" y1="2" x2="8" y2="18"/>
+        <line x1="16" y1="6" x2="16" y2="22"/>
+      </svg>
+      Shutdowns
+    </a>
+
+    <a class="nav-btn" href="about.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      About
+    </a>
+  </nav>
+
+  <!-- SHUTDOWNS PAGE -->
+  <section id="page-shutdowns" class="page active" aria-label="Shutdown dashboard">
+
+    <div class="shutdowns-layout" style="position: relative; z-index: 2;">
+
+      <!-- Left column: map + timeline -->
+      <div class="shutdowns-map-area">
+
+        <div class="shutdowns-header">
+          <h1>Internet Shutdown Tracker</h1>
+          <p>Global shutdown events 2009–2025 · <em>Data: Access Now / #KeepItOn</em></p>
+        </div>
+
+        <div id="flat-map-container" role="img" aria-label="Flat world map showing shutdown events">
+          <div class="map-placeholder-label">
+            
+          </div>
+        </div>
+
+        <!-- Timeline bar chart -->
+        <div class="timeline-wrap">
+          <div class="timeline-header">
+            <h4>Shutdowns per year</h4>
+            <div id="yearLabel">Loading</div>
+            <button id="playPauseBtn" class="play-btn">❚❚</button>
+          </div>
+  
+         <div class="timeline-container">
+
+  <div class="timeline-line"></div>
+
+  <input type="range" id="timeSlider" />
+
+  <div id="yearTicks"></div>
+
+</div>
+        </div> 
+
+      </div>
+
+      <!-- event list -->
+      <aside class="shutdowns-sidebar" aria-label="Shutdown statistics and event list">
+        <div class="shutdowns-header">
+          <p>The countries turn black based on the shutdown's beginning, and if an event has no documented end date it remains black.</p>
+        </div>
+        <div class="stat-card">
+          <h5>Total events (2009–2025)</h5>
+          <div class="stat-number" id="stat-total">—</div>
+          <div class="stat-sub">documented shutdowns worldwide</div>
+        </div>
+
+        <div class="stat-card">
+          <h5>Countries affected</h5>
+          <div class="stat-number" id="stat-countries">—</div>
+          <div class="stat-sub">unique countries · <span id="stat-year">all years</span></div>
+          <div id="affected-countries-names" style="margin-top: 12px; font-size: 0.85rem; line-height: 1.4; color: var(--text-muted, #aaa); font-family: 'DM Sans', sans-serif;"></div>
+        </div>
+
+      </aside>
+    </div>
+
+  </section>
+
+  <script src="js/shutdowns.js"></script>
+
+  <!-- MOBILE DISCLAIMER -->
+  <div id="mobile-disclaimer" role="dialog" aria-modal="true" aria-label="Desktop recommended">
+    <div class="mobile-disclaimer-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+      </svg>
+      <h2>Best on desktop</h2>
+      <p>This map is designed for larger screens. For the full experience, open it on a desktop or laptop.</p>
+      <button onclick="document.getElementById('mobile-disclaimer').style.display='none'">Continue anyway</button>
+      </div>
+  </div>
+
+</body>
+</html>

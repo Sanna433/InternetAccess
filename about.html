@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Internet Accessibility Worldwide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="starfield" aria-hidden="true"></div>
+
+  <!--  NAVIGATION -->
+  <nav>
+    <a class="nav-btn" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      Globe
+    </a>
+
+    <a class="nav-btn" href="shutdowns.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+        <line x1="8" y1="2" x2="8" y2="18"/>
+        <line x1="16" y1="6" x2="16" y2="22"/>
+      </svg>
+      Shutdowns
+    </a>
+
+    <a class="nav-btn active" href="about.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      About
+    </a>
+  </nav>
+
+  <!-- ABOUT PAGE -->
+  <section id="page-about" class="page active" aria-label="About the project">
+
+    <h1>About the Project</h1>
+    <p class="tagline">Mapping digital rights and internet access across the globe.</p>
+
+    <div class="about-section">
+      <h2>What is this?</h2>
+      <p>
+        <em>Internet Accessibility Worldwide</em> is a student data-visualisation project that combines a 3-D interactive globe with a shutdown timeline to make the state of global internet freedom tangible and explorable.
+      </p>
+      <p>
+        Click on any country on the globe to see its internet penetration rate. Switch to the Shutdowns view for a year-by-year record of government-ordered internet cuts since 2009.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2>Glossary</h2>
+      <p>
+        <strong>Internet access:</strong> refers to the ability of people in a country to connect and use the internet. It is the amount of people who have used the Internet from any location in the country within the last 3 months. Internet access can be linked to digital TV, mobile phone, computer, etc., or any connection to the World Wide Web.
+      </p>
+      <p>
+        <strong>Internet shutdowns:</strong> are intentional disruptions of internet or mobile connectivity, where access is fully or partially blocked in a specific area, region, or country, usually by authorities.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2>Data sources</h2>
+
+      <a class="data-source-card" href="https://www.accessnow.org/keepiton/" target="_blank" rel="noopener">
+        <div class="data-source-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div>
+          <div class="data-source-name">Access Now — #KeepItOn Dataset</div>
+          <div class="data-source-desc">Documented internet shutdown events worldwide, maintained by the #KeepItOn coalition since 2016.</div>
+        </div>
+      </a>
+
+      <a class="data-source-card" href="https://data.worldbank.org/indicator/IT.NET.USER.ZS?end=2025&name_desc=false&start=1990&utm_source=chatgpt.com&view=chart&year=2021" target="_blank" rel="noopener">
+        <div class="data-source-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div>
+          <div class="data-source-name">World Bank — Internet Access</div>
+          <div class="data-source-desc">Share of individuals using the internet per country, sourced from World Bank and ITU statistics.</div>
+        </div>
+      </a>
+
+      <a class="data-source-card" href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener">
+        <div class="data-source-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div>
+          <div class="data-source-name">World Bank — Population Data</div>
+          <div class="data-source-desc">Comprehensive global population statistics used to establish demographic context.</div>
+        </div>
+      </a>
+
+      <a class="data-source-card" href="https://hdr.undp.org/data-center/human-development-index" target="_blank" rel="noopener">
+        <div class="data-source-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="data-source-name">UNDP — Human Development Index</div>
+          <div class="data-source-desc">Official HDI rankings measuring health, education, and standard of living.</div>
+        </div>
+      </a>
+
+      <a class="data-source-card" href="https://ourworldindata.org/grapher/multidimensional-poverty-index-mpi" target="_blank" rel="noopener">
+        <div class="data-source-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
+        </div>
+        <div>
+          <div class="data-source-name">Our World in Data — Multidimensional Poverty Index</div>
+          <div class="data-source-desc">Analysis of deprivations in health, education, and living standards beyond monetary poverty.</div>
+        </div>
+      </a>
+
+      <a class="data-source-card" href="https://ourworldindata.org/grapher/economic-inequality-gini-index" target="_blank" rel="noopener">
+        <div class="data-source-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <div>
+          <div class="data-source-name">Our World in Data — Gini Index</div>
+          <div class="data-source-desc">Data sets tracking income inequality to reflect wealth distribution within countries.</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="about-section">
+      <h2>Understanding the Metrics</h2>
+      <p><strong>Indexes:</strong></p></break>
+      <p>
+        Beyond simple internet access rates, we provide three key socio-economic indicators to better understand the environment of each country:
+      </p>
+      <p><strong>HDI (Human Development Index):</strong> A summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable, and having a decent standard of living. Scale ranges from 0-1. Higher number equals better level of human development</p>
+      <p><strong>MPI (Multidimensional Poverty Index):</strong> Captures the number and intensity of deprivations that people experience in health, education, and living standards. Scale ranges from 0-1. A higher score equals higher levels of multidimensional poverty and deprivation in a region or country.</p>
+      <p><strong>Gini Index:</strong> A measure of statistical dispersion intended to represent the income inequality or wealth inequality within a nation. Scale ranges from 0-1. A higher score indicates greater inequality.</p>
+      <br/>
+      <p><strong>Risk categories:</strong></p></break>
+      <p>
+        We grouped risk of shutdown into categories based on annual shutdown frequency into low, medium, and severe risk categories based on established numerical thresholds.
+      </p>
+      <p><strong>Low risk:</strong> 0 shutdowns per year</p>
+      <p><strong>Medium risk:</strong> 1-9 shutdowns per year</p>
+      <p><strong>Severe risk:</strong> 10+ shutdowns per year</p>
+    </div>
+
+    <div class="about-section">
+      <h2>Technology</h2>
+      <p>
+        The 3D globe is rendered with <strong>Globe.GL</strong> (WebGL). Boarders are drawn <i>de facto</i> according to Natural Earth's <a href="https://www.naturalearthdata.com/about/disputed-boundaries-policy/">disputed boundaries policy</a>. The shutdown map uses <strong>Leaflet.js</strong> with GeoJSON country boundaries. Data is loaded from static JSON files. No backend required.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2>Credits</h2>
+      <p>
+        Authored by Sanna Seldenrijk, Alyona Avdeeva, Maria Kromina, and Kasiet Ryspaeva. Built as a student project at TU Wien for the M.Sc. Cartography, 2026S. Data belongs to the respective organisations linked above. This tool is for educational and awareness purposes only.
+      </p>
+    </div>
+
+  </section>
+
+</body>
+</html>
